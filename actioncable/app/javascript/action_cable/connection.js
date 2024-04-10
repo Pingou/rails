@@ -140,7 +140,7 @@ Connection.prototype.events = {
         logger.log(`Disconnecting. Reason: ${reason}`)
         return this.close({allowReconnect: reconnect})
       case message_types.ping:
-        return null
+        return this.subscriptions.notify(identifier, "ping", {})
       case message_types.confirmation:
         this.subscriptions.confirmSubscription(identifier)
         if (this.reconnectAttempted) {
