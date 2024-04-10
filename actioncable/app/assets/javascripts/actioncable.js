@@ -251,7 +251,7 @@
         });
 
        case message_types.ping:
-        return null;
+        return this.subscriptions.notify(identifier, "ping", {});
 
        case message_types.confirmation:
         this.subscriptions.confirmSubscription(identifier);
